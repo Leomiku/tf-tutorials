@@ -55,7 +55,7 @@ class Attack():
             image = tf.add(image, rand_filter)
         elif augment == 'blurring':
             kernel_size = 4
-            gamma = 100
+            gamma = 0.01
             kernel = np.matmul(cv2.getGaussianKernel(kernel_size, gamma), np.transpose(cv2.getGaussianKernel(kernel_size, gamma)))
             gauss_filter = tf.constant(kernel, dtype= tf.float32, shape= [kernel_size, kernel_size, 3, 3])
             image = tf.nn.conv2d(input= image, filter= gauss_filter, strides= [1, 1, 1, 1], padding= 'SAME', data_format= 'NHWC')
