@@ -16,7 +16,7 @@ class Config:
     nr_channel = 3
     image_shape = (32, 32)
     nr_class = 10
-    nr_epoch = 3000 ### you may need to increase nr_epoch to 4000 or more for targeted adversarial attacks
+    nr_epoch = 5000 ### you may need to increase nr_epoch to 4000 or more for targeted adversarial attacks
 
     weight_decay = 1e-10
 

@@ -73,7 +73,8 @@ def main():
 
             sess.run(tf.global_variables_initializer()) # init all variables
             images, labels = sess.run(train_batch_gnr)
-            labels[0] = np.random.randint(low= 0, high= config.nr_class)
+            for i in range(labels.shape[0]):
+                labels[i] = np.random.randint(low= 0, high= config.nr_class)
 
             for epoch in range(epoch_start + 1, config.nr_epoch + 1):
                 global_cnt += 1
