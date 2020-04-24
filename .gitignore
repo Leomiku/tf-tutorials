@@ -1,0 +1,19 @@
+# dataset file
+dataset-01/
+**/cifar-10-batches-py/
+cifar-10-python.tar.gz
+
+# model file
+vgg16-cifar.npy
+
+# log file
+**/train_log
+
+# python chache file
+**/__pycache__
+
+# diff file
+*.diff
+
+# image file
+*.png
