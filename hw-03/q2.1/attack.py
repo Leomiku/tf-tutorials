@@ -29,7 +29,7 @@ class Attack():
         else:
             target_one_hot = tf.one_hot(gt, config.nr_class)
 
-        loss = tf.losses.softmax_cross_entropy(target_one_hot, logits) * (-1) + tf.reduce_sum(tf.image.total_variation(x_norm))
+        loss = tf.losses.softmax_cross_entropy(target_one_hot, logits) * (-1) + tf.reduce_mean(tf.image.total_variation(x_norm))
         acc = tf.reduce_mean(tf.cast(tf.equal(tf.cast(tf.argmax(preds, 1), dtype=tf.int32),
                              tf.cast(tf.argmax(gt_one_hot, 1), dtype = tf.int32)), tf.float32))
         return  acc, loss, x_round
