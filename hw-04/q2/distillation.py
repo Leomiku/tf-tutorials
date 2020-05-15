@@ -35,6 +35,7 @@ def train(args, teacher_network):
         placeholders, label_onehot, logits = network.build() ## build quantized model
         preds = tf.nn.softmax(logits)
         target_label_onehot = tf.placeholder(tf.float32, shape=(None,) + (config.nr_class,), name='target_label') ### teacher label
+        target_label_onehot = tf.nn.softmax(target_label_onehot/args.temperature)
         correct_pred = tf.equal(tf.cast(tf.argmax(preds, 1), dtype=tf.int32),
                             tf.cast(tf.argmax(label_onehot, 1), dtype=tf.int32))
         accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))

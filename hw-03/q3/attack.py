@@ -20,7 +20,6 @@ class Attack():
     def generate_graph(self, pre_noise, x, gt, target = None, **kwargs):
         noise = 10 * tf.tanh(pre_noise) 
         x_noise = x + noise                 ## add perturbation and get adversarial examples
-        # x_augment = tf.contrib.image.translate(x_noise, [10, 10])
         x_noise = self.augment(x_noise, 'rotation', 'pepper', 'blurring')
         x_clip = tf.clip_by_value(x_noise, 0, 255) 
         x_round = x_clip + tf.stop_gradient(x_clip // 1 - x_clip) ##skip computing gradient wrt to rounded results(x_round) and only calculate the gradient wrt to x_clip 
